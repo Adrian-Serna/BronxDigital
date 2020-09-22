@@ -36,13 +36,16 @@ function initBabylonScene(srcScene:string){
     fileName: string;
     url:string;
     roomName:string;
+    roomSlug:string;
     }
     class artisLocation{
         slug:string;
         roomName:string;
-        constructor(slug:string, roomName:string){
+        roomSlug:string;
+        constructor(slug:string, roomName:string, roomSlug){
             this.slug = slug;
             this.roomName = roomName;
+            this.roomSlug = roomSlug;
         }
     }
     var indexCounter=0;
@@ -67,12 +70,10 @@ function initBabylonScene(srcScene:string){
           if(table){
             for(let i=1; i<table.rows.length;i++){
               var item = new urlSceneObject();
-              console.log(table.rows[i].cells[0].innerHTML)
               item.roomName = table.rows[i].cells[0].innerHTML;
-              console.log(table.rows[i].cells[1].innerHTML)
               item.fileName = table.rows[i].cells[1].innerHTML;
-              console.log(table.rows[i].cells[2].innerHTML)
               item.url = table.rows[i].cells[2].innerHTML;
+              item.roomSlug = table.rows[i].cells[3].innerHTML;
               if(item.fileName!=""&&item.url!=""){
                 urlsScenes.push(item);
               } 
@@ -99,7 +100,7 @@ function initBabylonScene(srcScene:string){
                             if( meshNames[0] === "Artist" ){
                                 if(meshElement.name.split(".")[2] !== null){
                                     slug = meshElement.name.split(".")[2].toLowerCase();
-                                    artistIndex.push(new artisLocation(slug,urlScene.roomName));
+                                    artistIndex.push(new artisLocation(slug,urlScene.roomName, urlScene.roomSlug));
                                     
                                 }
                             }
