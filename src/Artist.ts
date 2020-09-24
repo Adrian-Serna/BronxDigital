@@ -1,4 +1,4 @@
-import { Mesh, AbstractMesh, Vector3, Scene, PBRMetallicRoughnessMaterial, StandardMaterial, VideoTextureSettings, VideoTexture, InterpolateValueAction, ActionManager, Color3 } from "@babylonjs/core";
+import { Mesh, AbstractMesh, Vector3, Scene, PBRMetallicRoughnessMaterial, StandardMaterial, VideoTextureSettings, VideoTexture, InterpolateValueAction, ActionManager, Color3, ExecuteCodeAction } from "@babylonjs/core";
 
 export class Artist {
 
@@ -145,34 +145,32 @@ export class Cuadro {
         }
 
     // NO BORRAR: CODIGO ALTERNATIVO PARA RESALTAR LOS BORDES DEL CUADRO   
-     /* 
-       
-    var mouseOverUnit = function(unit_mesh) {
-    	console.log ("mouse over "+unit_mesh.meshUnderPointer.id);
-    	console.log (unit_mesh);
+     
+        
+    /* var mouseOverUnit = function(unit_mesh) {
+    	//console.log ("mouse over "+unit_mesh.meshUnderPointer.id);
+    	//console.log (unit_mesh);
     	if (unit_mesh.meshUnderPointer !== null) {
-        	unit_mesh.meshUnderPointer.renderOutline = true;	
-        	unit_mesh.meshUnderPointer.outlineWidth = 0.1;
+        	meshMaterial.emissiveColor = new Color3(0.05, 0.05, 0.05)	;
     	}
     }
     
     var mouseOutUnit = function(unit_mesh) {
-        ("mouse out "+unit_mesh.meshUnderPointer.id);
-    	console.log (unit_mesh);
+        //console.log ("mouse out "+unit_mesh.meshUnderPointer.id);
+    	//console.log (unit_mesh);
     	if (unit_mesh.source !== null) {
-        	unit_mesh.source.renderOutline = false;	
-        	unit_mesh.source.outlineWidth = 0.1;
+        	meshMaterial.emissiveColor = new Color3(0, 0, 0)	;
     	}
     }
 
-	let action = new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, mouseOverUnit);
-	let action2 = new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, mouseOutUnit);
+	let overAction = new ExecuteCodeAction(ActionManager.OnPointerOverTrigger, mouseOverUnit);
+	let outAction = new ExecuteCodeAction(ActionManager.OnPointerOutTrigger, mouseOutUnit);
 
-    this.mesh.actionManager = new BABYLON.ActionManager(scene);	
-	this.mesh.actionManager.registerAction(action);
-    this.mesh.actionManager.registerAction(action2); 
-    */
-
+    this.mesh.actionManager = new ActionManager(scene);	
+	this.mesh.actionManager.registerAction(overAction);
+    this.mesh.actionManager.registerAction(outAction);  */
+    
+    //this.mesh.material
        /*  let overAction = new InterpolateValueAction(ActionManager.OnPointerOverTrigger, this.mesh.material, "emissiveColor", new Color3(0.05, 0.05, 0.05), 200);
         let outAction = new InterpolateValueAction(ActionManager.OnPointerOutTrigger, this.mesh.material, "emissiveColor", new Color3(0, 0, 0), 200);
 
@@ -182,7 +180,7 @@ export class Cuadro {
         this.mesh.actionManager.registerAction(outAction);
  */
 
-        this.mesh.actionManager = new ActionManager(scene);
+/*         this.mesh.actionManager = new ActionManager(scene);
 
         let makeOverOut = function (mesh) {
     
@@ -190,7 +188,7 @@ export class Cuadro {
             mesh.actionManager.registerAction(new InterpolateValueAction(ActionManager.OnPointerOverTrigger, mesh.material, "emissiveColor", new Color3(0, 0.1, 0), 200));
         }
         
-        makeOverOut(this.mesh);
+        makeOverOut(this.mesh); */
 
         this.position.copyFromFloats(cuadro.position.x + ubicacion.x, cuadro.position.y + ubicacion.y, cuadro.position.z + ubicacion.z);
 

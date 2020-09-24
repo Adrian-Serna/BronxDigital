@@ -489,7 +489,7 @@ class GuiSceneBabylon{
       }, 8000);
       
       this.autoPlaySetted = true; 
-      document.getElementById("VI_GUI_Play").getElementsByTagName('a')[0].textContent = "stop auto";
+      //document.getElementById("VI_GUI_Play").getElementsByTagName('a')[0].textContent = "stop auto";
       if(cameraLevel < 2){
         this.next_artist();
       }
@@ -501,7 +501,7 @@ class GuiSceneBabylon{
       if(this.autoPlaySetted){
         clearInterval(this.intervalID);
         this.autoPlaySetted = false;
-        document.getElementById("VI_GUI_Play").getElementsByTagName('a')[0].textContent = "auto play";      
+        //document.getElementById("VI_GUI_Play").getElementsByTagName('a')[0].textContent = "auto play";      
     }
   }
 }
@@ -623,13 +623,17 @@ const main = async () => {
       }
 
 
-      setTimeout(function(){
+      /* setTimeout(function(){
         setMeshesMaterials(importedMeshes,sceneMaterials);
         createSkybox(URL_SCENE_JS);
       },11000);
+      */
 
       /** LOOP DE MESHES CARGADOS PARA ASIGNARLES COSAS */
+      
       importedMeshes.forEach(newMesh => {
+
+        /*
         //console.log(newMesh);
         if(newMesh.material){
           let meshTexture = newMesh.material.getActiveTextures()[0] as Texture;
@@ -643,6 +647,7 @@ const main = async () => {
             newMesh.material = shaderMaterial;
           }
         } 
+        */
 
         /***************/
 
@@ -665,9 +670,10 @@ const main = async () => {
             artist[artistIndex].firstCuadroAbsoluteOrder = cuadroAbsoluteOrder;
           }
           artist[artistIndex].cuadro[cuadroIndex].absoluteOrder = cuadroAbsoluteOrder ;
+
           cuadroAbsoluteOrder++;
         }
-      }
+      }  
 
       numArtists = artist.length;
       numCuadros = cuadroAbsoluteOrder;
@@ -676,7 +682,6 @@ const main = async () => {
       targetPosition = new Vector3(roomCenter.x, roomCenter.y + 1.7, roomCenter.z);
       targetCameraPosition = new Vector3(roomCenter.x, roomCenter.y + 1.7, roomCenter.z);
       oldTargetPosition = new Vector3(roomCenter.x, roomCenter.y + 1.7, roomCenter.z);
-
     
       if(scene.getMeshByName("Limits.000")){
         limits = scene.getMeshByName("Limits.000") as Mesh;
