@@ -1,4 +1,4 @@
-/** Versión: 0.9.4.2.Seb.2 */
+/** Versión: 0.9.4.3.Seb.1 */
 
 //imports
 import 'pepjs';
@@ -910,7 +910,16 @@ const main = async () => {
 
         if(hit.pickedMesh != null){
           guiVI.setCameraAutoPlay(false); 
-         
+
+          if(hit.pickedMesh.name == "Button.000"){
+            
+            try {
+              globalThis.bronxControl.showByURL("https://www.feriadelmillon.com.co/colfondos-observar/");
+            } catch (error) {
+              console.log("not loaded");
+            }
+            
+          }
           if(hit.pickedMesh.metadata != null){
 
             if (hit.pickedMesh && (hit.pickedMesh.metadata === cuadrosName || hit.pickedMesh.metadata === cuadrosMovieName)) {
