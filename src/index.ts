@@ -914,9 +914,9 @@ const main = async () => {
           if(hit.pickedMesh.name == "Button.000"){
             
             try {
-              globalThis.bronxControl.showByURL("https://www.feriadelmillon.com.co/colfondos-observar/");
+              globalThis.bronxControl.showInfoByURL("https://www.feriadelmillon.com.co/colfondos-observar/", 0);
             } catch (error) {
-              console.log("not loaded");
+              console.log(error);
             }
             
           }
