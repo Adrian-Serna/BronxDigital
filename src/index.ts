@@ -770,14 +770,17 @@ const main = async () => {
 
         //console.log("MESH NAME " + newMesh.name);
         
-        if(newMesh.material != null){
-          let meshMaterial = new PBRMaterial("Mat", scene);
-          meshMaterial = newMesh.material as PBRMaterial;
-          meshMaterial.backFaceCulling = false;
-          //meshMaterial.metallic = 0.2;
-          //meshMaterial.roughness = 0.8;
-          newMesh.material =  meshMaterial;
+        if(sceneName != "voltaje"){
+          if(newMesh.material != null){
+            let meshMaterial = new PBRMaterial("Mat", scene);
+            meshMaterial = newMesh.material as PBRMaterial;
+            meshMaterial.backFaceCulling = false;
+            meshMaterial.metallic = 0.2;
+            //meshMaterial.roughness = 0.8;
+            newMesh.material =  meshMaterial;
+          }
         }
+        
         
        
         let meshNames: string[] = newMesh.name.split(".");
@@ -791,7 +794,7 @@ const main = async () => {
         }
 
         /** CARGA SHADERS COMO LOADING */
-       /*  if(newMesh.material){
+         /* if(newMesh.material){
           let meshTexture = newMesh.material.getActiveTextures()[0] as Texture;
           if(meshTexture ){
             var shaderMaterial = new SampleMaterial("material", scene);
@@ -911,10 +914,12 @@ const main = async () => {
         if(hit.pickedMesh != null){
           guiVI.setCameraAutoPlay(false); 
 
-          if(hit.pickedMesh.name == "Button.000"){
+          if(hit.pickedMesh.name == "button.slug@1"){
             
             try {
-              globalThis.bronxControl.showInfoByURL("https://www.feriadelmillon.com.co/colfondos-observar/", 0);
+              console.log("bye bye")
+              window.open("https://www.feriadelmillon.com.co/colfondos-observar/", "_self");
+              
             } catch (error) {
               console.log(error);
             }
